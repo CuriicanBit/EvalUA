@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-ua-red: #DA291C;
+  --color-ua-red-hover: #B82116;
+  --color-ua-charcoal: #3D3935;
+  --color-ua-gray: #DADADA;
+  --color-ua-canvas: #F3F3F3;
+}
+
+@layer base {
+  body {
+    background-color: #F3F3F3;
+    color: #3D3935;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}

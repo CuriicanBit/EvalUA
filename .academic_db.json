@@ -1,0 +1,178 @@
+{
+  "sedes": [
+    {
+      "id": 1,
+      "nombre": "Sede Santiago",
+      "ciudad": "Santiago"
+    },
+    {
+      "id": 2,
+      "nombre": "Sede Temuco",
+      "ciudad": "Temuco"
+    },
+    {
+      "id": 3,
+      "nombre": "Sede Talca",
+      "ciudad": "Talca"
+    },
+    {
+      "id": 4,
+      "nombre": "Sede Concepción",
+      "ciudad": "Concepción"
+    },
+    {
+      "id": 5,
+      "nombre": "Sede La Serena"
+    },
+    {
+      "id": 6,
+      "nombre": "Sede Antofagasta",
+      "ciudad": "Antofagasta"
+    },
+    {
+      "id": 7,
+      "nombre": "Sede Iquique",
+      "ciudad": "Iquique"
+    },
+    {
+      "id": 8,
+      "nombre": "Sede Puerto Montt",
+      "ciudad": "Puerto Montt"
+    },
+    {
+      "id": 9,
+      "nombre": "Sede Test",
+      "ciudad": "Ciudad Test"
+    },
+    {
+      "id": 10,
+      "nombre": "Sede Rancagua",
+      "ciudad": "Rancagua"
+    }
+  ],
+  "campus": [
+    {
+      "id": 1,
+      "nombre": "Campus Providencia",
+      "sede_id": 1,
+      "direccion": "Av. Pedro de Valdivia 425"
+    },
+    {
+      "id": 2,
+      "nombre": "Campus El Llano Subercaseaux",
+      "sede_id": 1,
+      "direccion": "Ricardo Morales 3369"
+    },
+    {
+      "id": 3,
+      "nombre": "Campus Alemania",
+      "sede_id": 2,
+      "direccion": "Av. Alemania 01090"
+    },
+    {
+      "id": 4,
+      "nombre": "Campus Elqui",
+      "sede_id": 1
+    },
+    {
+      "id": 5,
+      "nombre": "Campus Copiapó",
+      "sede_id": 9
+    }
+  ],
+  "facultades": [
+    {
+      "id": 1,
+      "nombre": "Facultad de Ingeniería",
+      "campus_id": 1
+    },
+    {
+      "id": 2,
+      "nombre": "Facultad de Ciencias de la Salud",
+      "campus_id": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Facultad de Administración y Negocios",
+      "campus_id": 1
+    },
+    {
+      "id": 4,
+      "nombre": "Facultad de Derecho",
+      "campus_id": 1
+    }
+  ],
+  "carreras": [
+    {
+      "id": 1,
+      "nombre": "Ingeniería Civil en Informática",
+      "facultad_id": 1,
+      "codigo": "ICI-01"
+    },
+    {
+      "id": 2,
+      "nombre": "Ingeniería Civil Industrial",
+      "facultad_id": 1,
+      "codigo": "IND-02"
+    },
+    {
+      "id": 3,
+      "nombre": "Medicina",
+      "facultad_id": 2,
+      "codigo": "MED-01"
+    },
+    {
+      "id": 4,
+      "nombre": "Derecho",
+      "facultad_id": 1
+    }
+  ],
+  "asignaturas": [
+    {
+      "id": 1,
+      "nombre": "Cálculo Multivariable",
+      "carrera_id": 1,
+      "codigo": "MAT-201",
+      "semestre": 3
+    },
+    {
+      "id": 2,
+      "nombre": "Estructuras de Datos y Algoritmos",
+      "carrera_id": 1,
+      "codigo": "INF-202",
+      "semestre": 3
+    },
+    {
+      "id": 3,
+      "nombre": "Física Clásica",
+      "carrera_id": 1,
+      "codigo": "FIS-101",
+      "semestre": 2
+    },
+    {
+      "id": 4,
+      "nombre": "Derecho Romano",
+      "carrera_id": 1
+    }
+  ],
+  "docente_asignatura": [
+    {
+      "id": 1,
+      "docente_nombre": "Prof. Andrés Valenzuela",
+      "asignatura_id": 1,
+      "seccion": "Sección 1"
+    },
+    {
+      "id": 2,
+      "docente_nombre": "Prof. Andrés Valenzuela",
+      "asignatura_id": 2,
+      "seccion": "Sección 2"
+    },
+    {
+      "id": 3,
+      "docente_nombre": "Prof. Carlos Soto",
+      "asignatura_id": 3,
+      "seccion": "Sección 1"
+    }
+  ]
+}

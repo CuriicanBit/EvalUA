@@ -1,0 +1,17 @@
+{
+  "PRU-1794324813913": {
+    "id": "PRU-1794324813913",
+    "nombre_docente": "Prof. Carlos Soto",
+    "asignatura_nombre": "Física Clásica",
+    "nombre": "Control 1 - Vectores",
+    "cantidad_preguntas": 20,
+    "cantidad_alternativas": 5,
+    "cantidad_formas": 1,
+    "pauta_respuestas": {
+      "1": "A",
+      "2": "B"
+    },
+    "nivel_exigencia": 60,
+    "creado_en": "2026-11-10T15:33:33.913Z"
+  }
+}

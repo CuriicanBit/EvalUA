@@ -1,0 +1,6 @@
+{
+  "name": "Docente OMR - Corrector y Calificador de Pruebas",
+  "description": "Panel de control del docente para la corrección óptica de pruebas (OMR), cálculo de notas chilenas y analítica de evaluaciones.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
