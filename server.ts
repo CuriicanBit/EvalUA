@@ -2612,11 +2612,11 @@ if (!isDevBackend) {
   }
 }
 
-// Para Vercel: exportamos la app para que la use como función
+// Exportamos la app para Vercel (Serverless)
 export default app;
 
-// Para tu entorno local en AI Studio: que siga escuchando en el puerto 3001
+// Para AI Studio o entorno local, seguimos levantando el servidor tradicional
 if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.BACKEND_PORT || 3001;
-  app.listen(PORT, () => console.log(`Backend en puerto ${PORT}`));
+  const PORT = Number(process.env.BACKEND_PORT || process.env.PORT || 3000);
+  app.listen(PORT, '0.0.0.0', () => console.log(`Backend en puerto ${PORT}`));
 }
