@@ -11,21 +11,19 @@ interface ModuloImpresionFormulariosProps {
 
 export const ModuloImpresionFormularios: React.FC<ModuloImpresionFormulariosProps> = ({ pruebaData, onImpresionExitosa }) => {
   const [isGenerating, setIsGenerating] = useState(false);
-  const [showConfirmModal, setShowConfirmModal] = useState(false); // Nuevo estado para el modal
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const yaFueImpresa = pruebaData?.hojas_impresas === true;
 
-  // 1. Función que se ejecuta al hacer clic en el botón principal
   const handleGenerarPDF = () => {
     if (!yaFueImpresa) {
-      setShowConfirmModal(true); // Mostramos nuestro propio modal
+      setShowConfirmModal(true);
     } else {
-      ejecutarGeneracionPDF(); // Si ya fue impresa, generamos directo
+      ejecutarGeneracionPDF();
     }
   };
 
-  // 2. Función que hace el trabajo real (genera el PDF y actualiza la BD)
   const ejecutarGeneracionPDF = async () => {
-    setShowConfirmModal(false); // Cerramos el modal
+    setShowConfirmModal(false);
     setIsGenerating(true);
 
     try {
@@ -62,7 +60,7 @@ export const ModuloImpresionFormularios: React.FC<ModuloImpresionFormulariosProp
       
     } catch (error) {
       console.error("Error generando PDF:", error);
-      alert("Hubo un error al generar el PDF."); // Este alert aún podría ser bloqueado, luego lo cambiaremos si molesta
+      alert("Hubo un error al generar el PDF.");
     } finally {
       setIsGenerating(false);
     }
@@ -153,106 +151,112 @@ export const ModuloImpresionFormularios: React.FC<ModuloImpresionFormulariosProp
         {/* VISTA PREVIA */}
         <div className="lg:col-span-7 flex flex-col items-center">
           <div className="w-full flex items-center justify-between pb-2 px-1">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <span className="text-xs font-semibold text-[#3D3935]/70 uppercase tracking-wider">
               Vista Previa de la Hoja (v5.0)
             </span>
           </div>
 
-          <div className="w-full max-w-[620px] aspect-[8.5/11] bg-white rounded-sm shadow-xl border border-slate-300 relative p-8 flex flex-col justify-between overflow-hidden">
+          <div className="w-full max-w-[620px] aspect-[8.5/11] bg-white rounded-sm shadow-xl border border-[#DADADA] relative p-8 flex flex-col justify-between overflow-hidden">
+            {/* Marcas fiduciales */}
             <div className="absolute top-4 left-4 w-5 h-5 bg-black" />
             <div className="absolute top-4 right-4 w-5 h-5 bg-black" />
             <div className="absolute bottom-4 left-4 w-5 h-5 bg-black" />
             <div className="absolute bottom-4 right-4 w-5 h-5 bg-black" />
 
-            <div className="absolute top-4 right-14 flex gap-1">
-               <div className="grid grid-cols-8 gap-1">
-                  {[...Array(24)].map((_, i) => (
-                    <div key={i} className={`w-2 h-2 rounded-full ${i % 3 === 0 ? 'bg-black' : 'border border-black'}`} />
-                  ))}
-               </div>
-            </div>
-
             <div className="space-y-4 pt-4">
-              <div className="border-b pb-2">
-                <h4 className="text-[13px] font-black text-slate-900 tracking-tight">UNIVERSIDAD AUTÓNOMA DE CHILE</h4>
-                <p className="text-[9px] font-semibold text-slate-500 uppercase">{pruebaData?.asignatura_nombre} | {pruebaData?.carrera}</p>
+              <div className="border-b border-[#DADADA] pb-2">
+                <h4 className="text-[13px] font-black text-[#3D3935] tracking-tight">UNIVERSIDAD AUTÓNOMA DE CHILE</h4>
+                <p className="text-[9px] font-semibold text-[#3D3935]/70 uppercase">
+                  {pruebaData?.asignatura_nombre} | {pruebaData?.carrera || 'No especificada'} | {pruebaData?.seccion || 'Sección Única'}
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="border border-slate-300 rounded-sm p-2">
-                  <span className="text-[8px] font-bold text-slate-500 block mb-1">RUT</span>
+                <div className="border border-[#DADADA] rounded-sm p-2">
+                  <span className="text-[8px] font-bold text-[#3D3935]/70 block mb-1">RUT</span>
                   <div className="flex gap-1 mb-2">
-                    {[...Array(8)].map((_, i) => <div key={i} className="w-3 h-4 border border-slate-400 rounded-sm"></div>)}
+                    {[...Array(8)].map((_, i) => <div key={i} className="w-3 h-4 border border-[#DADADA] rounded-sm"></div>)}
                     <div className="w-1"></div>
-                    <div className="w-3 h-4 border border-slate-400 rounded-sm"></div>
+                    <div className="w-3 h-4 border border-[#DADADA] rounded-sm"></div>
                   </div>
                   <div className="flex gap-1">
-                     {[...Array(6)].map((_, i) => (
+                     {[...Array(9)].map((_, i) => (
                        <div key={i} className="flex flex-col gap-1">
-                         {[...Array(5)].map((_, j) => <div key={j} className="w-2 h-2 rounded-full border border-slate-300"></div>)}
+                         {[...Array(5)].map((_, j) => <div key={j} className="w-1.5 h-1.5 rounded-full border border-[#DADADA]"></div>)}
                        </div>
                      ))}
                   </div>
                 </div>
                 
-                <div className="border border-slate-300 rounded-sm p-2 space-y-2">
+                <div className="border border-[#DADADA] rounded-sm p-2 space-y-1">
                   <div>
-                    <span className="text-[8px] font-bold text-slate-500 block">NOMBRE:</span>
-                    <div className="border-b border-dashed border-slate-300 h-3"></div>
-                    <div className="border-b border-dashed border-slate-300 h-3 mt-1"></div>
+                    <span className="text-[8px] font-bold text-[#3D3935]/70 block">NOMBRE COMPLETO:</span>
+                    <div className="border-b border-dashed border-[#DADADA] h-3 mt-1"></div>
+                    <div className="border-b border-dashed border-[#DADADA] h-3 mt-1"></div>
                   </div>
                   <div>
-                    <span className="text-[8px] font-bold text-slate-500 block">CARRERA:</span>
-                    <div className="border-b border-dashed border-slate-300 h-3"></div>
+                    <span className="text-[8px] font-bold text-[#3D3935]/70 block">CARRERA:</span>
+                    <div className="border-b border-dashed border-[#DADADA] h-3 mt-1"></div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 mt-1">
                      <div>
-                        <span className="text-[8px] font-bold text-slate-500 block">SECCIÓN:</span>
-                        <div className="border-b border-dashed border-slate-300 h-3"></div>
+                        <span className="text-[8px] font-bold text-[#3D3935]/70 block">SECCIÓN:</span>
+                        <div className="border-b border-dashed border-[#DADADA] h-3 mt-1"></div>
                      </div>
                      <div>
-                        <span className="text-[8px] font-bold text-slate-500 block">FECHA:</span>
-                        <div className="border-b border-dashed border-slate-300 h-3"></div>
+                        <span className="text-[8px] font-bold text-[#3D3935]/70 block">FECHA:</span>
+                        <div className="border-b border-dashed border-[#DADADA] h-3 mt-1"></div>
                      </div>
                   </div>
                 </div>
               </div>
 
-              <div className="border border-slate-300 rounded-sm p-4 flex-1">
-                <div className="text-center text-[9px] font-bold text-slate-800 mb-2">HOJA DE RESPUESTAS</div>
-                <div className="grid grid-cols-2 gap-4">
+              <div className="border border-[#DADADA] rounded-sm p-4 flex-1 flex flex-col">
+                <div className="text-center text-[10px] font-black text-[#3D3935] mb-2">
+                  HOJA DE RESPUESTAS ({pruebaData?.cantidad_preguntas || 0} ÍTEMS)
+                </div>
+                <div className="text-center text-[7px] text-[#3D3935]/70 mb-3">
+                  Rellene completamente un solo círculo por pregunta, con lápiz grafito o lápiz pasta oscuro. No use corrector.
+                </div>
+                
+                <div className="grid grid-cols-2 gap-x-8 gap-y-1 flex-1">
                   <div className="space-y-1">
-                    {[...Array(5)].map((_, i) => (
+                    {Array.from({ length: Math.ceil((pruebaData?.cantidad_preguntas || 0) / 2) }, (_, i) => (
                       <div key={i} className="flex items-center gap-2">
-                        <span className="text-[8px] text-slate-400 w-3">{i+1}</span>
+                        <span className="text-[8px] text-[#3D3935]/70 w-4 font-mono">{String(i + 1).padStart(2, '0')}</span>
                         <div className="flex gap-1.5">
-                          {[...Array(pruebaData?.cantidad_alternativas || 4)].map((_, j) => (
-                            <div key={j} className="w-2.5 h-2.5 rounded-full border border-slate-400"></div>
+                          {[...Array(pruebaData?.cantidad_alternativas || 5)].map((_, j) => (
+                            <div key={j} className="w-2.5 h-2.5 rounded-full border border-[#DADADA]"></div>
                           ))}
                         </div>
                       </div>
                     ))}
                   </div>
+                  
                   <div className="space-y-1">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <span className="text-[8px] text-slate-400 w-3">{i+6}</span>
-                        <div className="flex gap-1.5">
-                          {[...Array(pruebaData?.cantidad_alternativas || 4)].map((_, j) => (
-                            <div key={j} className="w-2.5 h-2.5 rounded-full border border-slate-400"></div>
-                          ))}
+                    {Array.from({ length: Math.ceil((pruebaData?.cantidad_preguntas || 0) / 2) }, (_, i) => {
+                      const numPregunta = i + Math.ceil((pruebaData?.cantidad_preguntas || 0) / 2) + 1;
+                      if (numPregunta > (pruebaData?.cantidad_preguntas || 0)) return null;
+                      return (
+                        <div key={i} className="flex items-center gap-2">
+                          <span className="text-[8px] text-[#3D3935]/70 w-4 font-mono">{String(numPregunta).padStart(2, '0')}</span>
+                          <div className="flex gap-1.5">
+                            {[...Array(pruebaData?.cantidad_alternativas || 5)].map((_, j) => (
+                              <div key={j} className="w-2.5 h-2.5 rounded-full border border-[#DADADA]"></div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> {/* <--- ESTE ERA EL CIERRE QUE FALTABA */}
 
-      {/* MODAL DE CONFIRMACIÓN (Reemplaza al window.confirm) */}
+      {/* MODAL DE CONFIRMACIÓN */}
       {showConfirmModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden animate-in fade-in zoom-in duration-200">
